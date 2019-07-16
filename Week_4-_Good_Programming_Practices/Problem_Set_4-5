@@ -1,0 +1,32 @@
+# Problem 5 - Playing a Hand
+# 10/10 points (graded)
+# In ps4a.py, note that in the function playHand, there is a bunch of pseudocode. This pseudocode is provided to help guide you in
+# writing your function. Check out the Why Pseudocode? resource to learn more about the What and Why of Pseudocode before you start
+# coding your solution.
+
+# Note: Do not assume that there will always be 7 letters in a hand! The parameter n represents the size of the hand.
+
+# Testing: Before testing your code in the answer box, try out your implementation as if you were playing the game.
+
+def playHand(hand, wordList, n):
+    hand2 = hand.copy()
+    total = 0
+    while True:
+          print('Current Hand:', end=' ') 
+          displayHand(hand2)
+          text = input ('Enter word, or a "." to indicate that you are finished: ')
+          if text == '.':
+              print ('Goodbye! Total score:', str(total), 'points.')
+              break
+          elif isValidWord(text, hand2, wordList) == True:
+              score = getWordScore(text, n)
+              total += score
+              print (text, 'earned', str(score), 'points. Total:', str(total), 'points\n')
+              hand2 = updateHand(hand2, text)
+              if calculateHandlen(hand2) == 0:
+                  print ('Run out of letters. Total score:', str(total), 'points.')
+                  break
+              else:
+                  continue
+          else:
+              print ('Invalid word, please try again.\n')
