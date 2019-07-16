@@ -1,0 +1,46 @@
+# Problem 7 - You and your Computer
+# 20/20 points (graded)
+# Now that your computer can choose a word, you need to give the computer the option to play. Write the code that re-implements the
+# playGame function. You will modify the function to behave as described below in the function's comments. As before, you should use the
+# HAND_SIZE constant to determine the number of cards in a hand. Be sure to try out different values for HAND_SIZE with your program.
+
+def playGame(wordList):
+    hand = {}
+    while True: 
+          com1 = input ('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+          if com1 == 'n':
+                  while True:
+                        com2 = input ('Enter u to have yourself play, c to have the computer play: ')
+                        if com2 == 'u':
+                                 hand = dealHand (HAND_SIZE)
+                                 playHand(hand, wordList, HAND_SIZE)
+                                 break
+                        elif com2 == 'c':
+                                 hand = dealHand (HAND_SIZE)
+                                 compPlayHand(hand, wordList, HAND_SIZE)
+                                 break
+                        else:
+                             print ('Invalid command.')
+                     
+          elif com1 == 'r':
+                   if hand != {}:
+                          while True:
+                                com2 = input ('Enter u to have yourself play, c to have the computer play: ')
+                                if com2 == 'u':
+                                             hand_r = hand
+                                             playHand(hand_r, wordList, HAND_SIZE)
+                                             break                                   
+                                elif com2 == 'c':                               
+                                             hand_r = hand
+                                             compPlayHand(hand_r, wordList, HAND_SIZE)
+                                             break
+                                else:
+                                             print ('Invalid command.')
+                                             break
+                   else:
+                           print ('You have not played a hand yet. Please play a new hand first!')                              
+          
+          elif com1 == 'e':
+                  break
+          else:
+                  print ('Invalid command.')
