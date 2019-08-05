@@ -1,0 +1,23 @@
+def uniqueValues(aDict):
+    '''
+    aDict: a dictionary
+    returns: a sorted list of keys that map to unique aDict values, empty list if none
+    '''
+    result = []
+    ans = []
+    for key in aDict:
+        if aDict[key] not in result:
+            result.append(aDict[key])
+            ans.append(key)
+        else:          
+            for ele in ans:
+                if aDict[ele] == aDict[key]:
+                   ans.remove(ele)
+    ans.sort()
+    return ans
+
+
+            
+        
+        
+ 
